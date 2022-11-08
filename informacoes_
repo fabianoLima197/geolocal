@@ -1,0 +1,14 @@
+pip install django geoip2 requests
+
+django-admin startproject geolocal .
+
+django-admin startapp core
+
+baixar:
+https://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz
+link nao funcionou baixei do proprio curso
+
+https://www.yelp.com = fazer o cadastro -> feito
+LA EMBAIXO PROGRAMADORES E PROCURA O GETSTARTER
+
+Kj_T9QfcPtFdwo2WbOMnfYz1X_jX4Yv-Z2v6RGzBXwOWZhX5vr6Ier2z1Ox6OFka6vPnCk10t37IvgfurFCjk-jy8XmqTTxCtR8sZ5ryC6GYc_HCv73jW_-f2JJqY3Yx

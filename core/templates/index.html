@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-6">
+            <form autocomplete="off" action="{% url 'index' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <h1><a href="{% url 'index' %}">Buscador F/L</a></h1>
+                    <p>Criado por: Fabiano Lima</p>
+                    <p>email: fabianolimaads@gmail.com</p>
+                    <p>Telef: +55 11 95890-4910</p>
+
+                    <h4>[{{ city }}] {% if country %} - {{ country }} {% endif %}</h4>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="key" placeholder="Digite o termo da busca aqui (Obrigatório)" required/>
+                    <small id="keyhelp" class="form-text text-muted">Exemplo: Mexican Food, Brazilian Food, Asian Food, etc...</small>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="loc" placeholder="Digite uma Cidade para efetuar a busca"/>
+                    <small id="lochelp" class="form-text text-muted">Exemplo: São Paulo, Madrid, Paraiba, etc..</small>
+                </div>
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </form>
+            {% if 'error' in items %}
+                <h1>Nenhum estabelecimento encontrado em {{ city }}</h1>
+            {% elif busca and items.businesses|length < 1 %}
+                <h1>Nada encontrado sobre o termo buscado</h1>
+            {% elif city and items %}
+                <h1>Resultado da Busca</h1>
+                {% for biz in items.businesses %}
+                    <span class="text-info">{{ biz.name }}, {{ city }}</span><br/>
+                {% endfor %}
+            {% endif %}
+         </div>
+        {% if city and items %}
+            {% include 'maps.html' %}
+        {% endif %}
+{% endblock %}
